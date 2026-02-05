@@ -1,0 +1,43 @@
+services:
+  # ================= BACKEND =================
+  - type: web
+    name: connexgen-backend
+    env: node
+    plan: free
+    region: singapore
+    rootDir: Backend
+    buildCommand: npm install
+    startCommand: npm start
+    envVars:
+      - key: NODE_ENV
+        value: production
+
+      - key: PORT
+        value: 10000
+
+      - key: MONGO_URL
+        sync: false
+
+      - key: JWT_SECRET
+        sync: false
+
+      - key: FRONTEND_URL
+        sync: false
+
+      - key: CLOUDINARY_NAME
+        sync: false
+
+      - key: CLOUDINARY_API_KEY
+        sync: false
+
+      - key: CLOUDINARY_API_SECRET
+        sync: false
+
+  # ================= FRONTEND =================
+  - type: web
+    name: connexgen-frontend
+    env: static
+    plan: free
+    rootDir: Frontend
+    buildCommand: npm install && npm run build
+    staticPublishPath: dist
