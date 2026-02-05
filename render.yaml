@@ -37,7 +37,6 @@ services:
   - type: web
     name: connexgen-frontend
     env: static
-    plan: free
     rootDir: Frontend
     buildCommand: npm install && npm run build
     staticPublishPath: dist
